@@ -528,7 +528,7 @@ nav.scrolled .nav-pill { box-shadow: 0 4px 28px rgba(0,0,0,0.4); }
     <div class="clients-outer">
         <div class="section-wrap" style="padding-bottom:0; padding-top:80px;">
             <div class="section-eyebrow">Trusted by</div>
-            <h2 class="section-heading-italic">50+ Clients</h2>
+            <h2 class="section-heading-italic">100+ Clients</h2>
         </div>
         <div style="height:60px;"></div>
         <div class="clients-stage" id="clientsStage">
@@ -627,26 +627,22 @@ nav.scrolled .nav-pill { box-shadow: 0 4px 28px rgba(0,0,0,0.4); }
 
 const videoData = {
     motion: [
-        { title:"Appetise",           year:"2026", src:"videos/motion/Appetise_1.mp4"  },
-        { title:"Appetise",           year:"2026", src:"videos/motion/Appetise_2.mp4"  },
-        { title:"Green Climate Fund", year:"2026", src:"videos/motion/GCF_v3.mp4"      },
-        { title:"Gigawatt",           year:"2025", src:"videos/motion/Gigawatt.mp4"    },
-        { title:"Minea",              year:"2024", src:"videos/motion/MINEA.mp4"       },
-        { title:"Tropos AR",          year:"2024", src:"videos/motion/TroposAR.MP4"    },
+        { title:"Appetise",  year:"2026", src:"videos/motion/Appetise_1.mp4", preview:"previews/Appetise_1.jpg"  },
+        { title:"Appetise",  year:"2026", src:"videos/motion/Appetise_2.mp4", preview:"previews/Appetise_2.jpg"  },
+        { title:"Gigawatt",  year:"2025", src:"videos/motion/Gigawatt.mp4",   preview:"previews/Gigawatt.jpg"    },
+        { title:"Minea",     year:"2024", src:"videos/motion/MINEA.mp4",      preview:"previews/MINEA.jpg"       },
+        { title:"Tropos AR", year:"2024", src:"videos/motion/TroposAR.MP4",   preview:"previews/TroposAR.jpg"    },
     ],
     cgi: [
-        { title:"something.cool",           year:"2025", src:"videos/cgi/somethingcool.MP4" },
-        { title:"Summit Metalls",           year:"2024", src:"videos/cgi/SummitMetalls.mp4" },
-        { title:"Travel Motion",            year:"2026", src:"videos/cgi/Travel.mp4"        },
-        { title:"$GAMBLE",                  year:"2025", src:"videos/cgi/casino.MP4"        },
-        { title:"$BASICMAN",                year:"2025", src:"videos/cgi/lego.MP4"          },
-        { title:"Teaser for Thatkidnasty4", year:"2025", src:"videos/cgi/teaser1.MP4"       },
-        { title:"Teaser for MARSY",         year:"2025", src:"videos/cgi/teaser2.MP4"       },
-        { title:"$YIPPEE",                  year:"2025", src:"videos/cgi/yipe.MP4"          },
+        { title:"something.cool",           year:"2025", src:"videos/cgi/somethingcool.MP4", preview:"previews/somethingcool.jpg" },
+        { title:"Summit Metalls",           year:"2024", src:"videos/cgi/SummitMetalls.mp4", preview:"previews/SummitMetalls.jpg" },
+        { title:"Travel Motion",            year:"2026", src:"videos/cgi/Travel.mp4",        preview:"previews/Travel.jpg"        },
+        { title:"Teaser for Thatkidnasty4", year:"2025", src:"videos/cgi/teaser1.MP4",       preview:"previews/teaser1.jpg"       },
+        { title:"Teaser for MARSY",         year:"2025", src:"videos/cgi/teaser2.MP4",       preview:"previews/teaser2.jpg"       },
     ],
     longform: [
-        { title:"Friends IRL",   year:"2026", src:"videos/longform/friends.mp4" },
-        { title:"Messe München", year:"2025", src:"videos/longform/munchen.mp4" },
+        { title:"Friends IRL",   year:"2026", src:"videos/longform/friends.mp4", preview:"previews/friends.jpg" },
+        { title:"Messe München", year:"2025", src:"videos/longform/munchen.mp4", preview:"previews/munchen.jpg" },
     ]
 };
 
@@ -772,8 +768,8 @@ function init3DCards() {}
 
 document.addEventListener('DOMContentLoaded',()=>{
     setupShowreelVideo();
-    createVideoGrid('motion',  'motion-grid',  6);
-    createVideoGrid('cgi',     'cgi-grid',     8);
+    createVideoGrid('motion',  'motion-grid',  5);
+    createVideoGrid('cgi',     'cgi-grid',     5);
     createVideoGrid('longform','longform-grid',2);
     setupNavigation();
     setupModal();
@@ -814,18 +810,13 @@ function createVideoItem(video) {
     item.className = 'video-item';
     item.innerHTML = `
         <div class="video-thumb-wrap">
-            <video class="video-thumb-img" muted loop playsinline preload="none">
-                <source src="${video.src}" type="video/mp4">
-            </video>
+            <img class="video-thumb-img" src="${video.preview}" alt="${video.title}" loading="lazy">
         </div>
         <div class="video-info-overlay">
             <div class="play-icon">▶</div>
             <div class="video-title">${video.title}</div>
             <div class="video-year">${video.year}</div>
         </div>`;
-    const vid = item.querySelector('video');
-    item.addEventListener('mouseenter', () => vid.play().catch(() => {}));
-    item.addEventListener('mouseleave', () => { vid.pause(); vid.currentTime = 0; });
     item.addEventListener('click', () => openVideoModal(video.src));
     return item;
 }
@@ -864,13 +855,15 @@ function showPage(id) {
         document.getElementById(p+'-page')?.classList.remove('active')
     );
     document.getElementById(id+'-page')?.classList.add('active');
-    if(id==='showreel')
-        document.getElementById('showreelVideo').play().catch(()=>{});
+    const sv = document.getElementById('showreelVideo');
+    if (id === 'showreel') {
+        sv?.play().catch(()=>{});
+    } else {
+        sv?.pause();
+    }
 }
 
 function stopAllVideos() {
-    document.getElementById('showreelVideo')?.pause();
-    document.querySelectorAll('.video-thumb-img').forEach(v => { v.pause(); v.currentTime = 0; });
     const mv = document.getElementById('modalVideo');
     if (mv) { mv.pause(); mv.removeAttribute('src'); }
 }
