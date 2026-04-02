@@ -10,16 +10,13 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 
 :root {
-    --bg:        #06100a;
-    --bg2:       #0c1e11;
-    --surface:   rgba(255,255,255,0.04);
-    --border:    rgba(110,200,130,0.14);
-    --glass-hi:  rgba(255,255,255,0.10);
-    --text:      #ddeee1;
-    --muted:     rgba(180,225,190,0.48);
-    --subtle:    rgba(150,210,170,0.28);
-    --green:     #6db87a;
-    --radius:    18px;
+    --bg:      #06100a;
+    --surface: rgba(255,255,255,0.04);
+    --border:  rgba(110,200,130,0.14);
+    --text:    #ddeee1;
+    --muted:   rgba(180,225,190,0.48);
+    --subtle:  rgba(150,210,170,0.28);
+    --radius:  18px;
 }
 
 body {
@@ -30,38 +27,26 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-/* ══════════════════════════════════
-   NOISE OVERLAY
-══════════════════════════════════ */
 .noise-overlay {
     position: fixed; inset:0; z-index:9998;
-    pointer-events:none;
-    opacity: 0.038;
+    pointer-events:none; opacity: 0.038;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-size: 200px 200px;
 }
 
-/* ══════════════════════════════════
-   BACKGROUND CANVAS
-══════════════════════════════════ */
 #bgCanvas {
     position: fixed; inset:0;
     width:100%; height:100%;
-    z-index:0; pointer-events:none;
-    display:block;
+    z-index:0; pointer-events:none; display:block;
 }
 
 nav, .page-content, .contact-fixed, .modal { position:relative; z-index:1; }
 nav { z-index:1000; }
 .modal { z-index:2000; }
 
-/* ══════════════════════════════════
-   FIXED CONTACT BUTTON — по центру снизу
-══════════════════════════════════ */
 .contact-fixed {
     position: fixed;
-    bottom: 32px;
-    right: 36px;
+    bottom: 32px; right: 36px;
     z-index: 900;
 }
 
@@ -73,12 +58,9 @@ nav { z-index:1000; }
     padding: 12px 26px;
     border-radius: 50px;
     text-decoration: none;
-    font-weight: 500;
-    font-size: 13px;
+    font-weight: 500; font-size: 13px;
     letter-spacing: 0.03em;
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
+    display: inline-flex; align-items: center; gap: 9px;
     border: 1px solid rgba(110,200,130,0.22);
     transition: background 0.25s, border-color 0.25s, transform 0.25s;
 }
@@ -89,35 +71,26 @@ nav { z-index:1000; }
     transform: translateY(-2px);
 }
 
-/* ══════════════════════════════════
-   НАВИГАЦИЯ — плавная анимация
-══════════════════════════════════ */
 nav {
     position: fixed; top: 0; left: 0;
     width: 100%; height: auto;
     padding: 16px 40px;
-    display: flex;
-    align-items: center;
+    display: flex; align-items: center;
     z-index: 1000;
-    background: transparent;
-    border-bottom: none;
+    background: transparent; border-bottom: none;
 }
 
-/* Логотип — плавно исчезает влево */
 .logo {
     font-size: 14px; font-weight: 600;
     letter-spacing: 0.03em; line-height: 1.45;
     color: var(--text);
-    opacity: 1;
-    transform: translateX(0);
+    opacity: 1; transform: translateX(0);
     transition: opacity 0.4s ease, transform 0.45s cubic-bezier(.4,0,.2,1);
-    pointer-events: auto;
-    flex-shrink: 0;
+    pointer-events: auto; flex-shrink: 0;
 }
 
 nav.scrolled .logo {
-    opacity: 0;
-    transform: translateX(-20px);
+    opacity: 0; transform: translateX(-20px);
     pointer-events: none;
 }
 
@@ -129,27 +102,17 @@ nav.scrolled .logo {
 
 .logo .subtitle:hover { color: var(--text); }
 
-/* Pill — занимает оставшееся место, центрируется внутри него */
 .nav-pill {
-    display: flex;
-    align-items: center;
-    gap: 2px;
+    display: flex; align-items: center; gap: 2px;
     background: rgba(6,16,10,0.72);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(110,200,130,0.12);
-    border-radius: 50px;
-    padding: 4px;
-    /* Позиционируется через JS-анимацию translateX */
-    margin-left: auto;
-    margin-right: 0;
-    transition: box-shadow 0.45s,
-                transform 0.55s cubic-bezier(.4,0,.2,1);
+    border-radius: 50px; padding: 4px;
+    margin-left: auto; margin-right: 0;
+    transition: box-shadow 0.45s, transform 0.55s cubic-bezier(.4,0,.2,1);
 }
 
-nav.scrolled .nav-pill {
-    box-shadow: 0 4px 28px rgba(0,0,0,0.4);
-}
+nav.scrolled .nav-pill { box-shadow: 0 4px 28px rgba(0,0,0,0.4); }
 
 .nav-links { display: contents; }
 
@@ -158,45 +121,32 @@ nav.scrolled .nav-pill {
     text-decoration: none;
     font-size: 13px; font-weight: 500;
     padding: 7px 18px; border-radius: 40px;
-    transition: all 0.22s;
-    white-space: nowrap;
+    transition: all 0.22s; white-space: nowrap;
 }
 
 .nav-links a:hover { color: var(--text); }
 
 .nav-links a.active {
     background: rgba(255,255,255,0.92);
-    color: #06100a;
-    font-weight: 600;
+    color: #06100a; font-weight: 600;
 }
 
-/* ══════════════════════════════════
-   СТРАНИЦЫ
-══════════════════════════════════ */
 .page-content { display:none; min-height:100vh; padding-top:72px; }
 .page-content.active { display:block; }
 #showreel-page { width:100%; }
 #showreel-page.active { display:block; }
 
-/* ══════════════════════════════════
-   HERO
-══════════════════════════════════ */
-.showreel-hero {
-    height:100vh; width:100%;
-    position:relative; overflow:hidden;
-}
+.showreel-hero { height:100vh; width:100%; position:relative; overflow:hidden; }
 
 #showreelVideo {
-    width:100%; height:100%;
-    object-fit:cover;
+    width:100%; height:100%; object-fit:cover;
     position:absolute; top:0; left:0; z-index:1;
 }
 
 .hero-overlay {
     position:absolute; inset:0;
     background: linear-gradient(to bottom, transparent 40%, rgba(6,16,10,0.65) 80%, var(--bg) 100%);
-    z-index:2;
-    pointer-events: none;
+    z-index:2; pointer-events: none;
 }
 
 .video-loading {
@@ -219,7 +169,6 @@ nav.scrolled .nav-pill {
     50%      { transform:translateX(-50%) translateY(6px); opacity:.6; }
 }
 
-/* Кнопка Watch Showreel */
 .hero-play-wrap {
     position: absolute;
     bottom: 88px; left: 50%;
@@ -228,23 +177,16 @@ nav.scrolled .nav-pill {
 }
 
 .hero-play-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
+    display: inline-flex; align-items: center; gap: 12px;
     background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255,255,255,0.2);
     color: var(--text);
-    padding: 14px 32px;
-    border-radius: 50px;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
-    cursor: pointer;
+    padding: 14px 32px; border-radius: 50px;
+    font-size: 14px; font-weight: 500;
+    letter-spacing: 0.04em; cursor: pointer;
     transition: background 0.25s, border-color 0.25s, transform 0.25s;
-    font-family: inherit;
-    white-space: nowrap;
+    font-family: inherit; white-space: nowrap;
 }
 
 .hero-play-btn:hover {
@@ -254,80 +196,56 @@ nav.scrolled .nav-pill {
 }
 
 .hero-play-icon {
-    width: 28px; height: 28px;
-    border-radius: 50%;
+    width: 28px; height: 28px; border-radius: 50%;
     background: rgba(255,255,255,0.14);
     border: 1px solid rgba(255,255,255,0.24);
-    display: inline-flex;
-    align-items: center; justify-content: center;
-    font-size: 10px;
-    flex-shrink: 0;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 10px; flex-shrink: 0;
 }
 
-/* Модалка шоурила */
 .showreel-modal {
-    display: none;
-    position: fixed; inset: 0;
+    display: none; position: fixed; inset: 0;
     background: rgba(2,6,3,0.96);
-    backdrop-filter: blur(32px);
-    -webkit-backdrop-filter: blur(32px);
+    backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px);
     z-index: 3000;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; align-items: center;
     animation: fadeIn 0.3s ease;
 }
 
 .showreel-modal.active { display: flex; }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from { opacity: 0; } to { opacity: 1; }
 }
 
 .showreel-modal-wrap {
-    width: 92%;
-    max-width: 1200px;
-    aspect-ratio: 16/9;
-    border-radius: 20px;
-    overflow: hidden;
+    width: 92%; max-width: 1200px;
+    aspect-ratio: 16/9; border-radius: 20px; overflow: hidden;
     border: 1px solid rgba(110,200,130,0.18);
-    box-shadow: 0 40px 100px rgba(0,0,0,0.8),
-                inset 0 1px 0 rgba(255,255,255,0.08);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.08);
     position: relative;
 }
 
 #showreelModalVideo {
     width: 100%; height: 100%;
-    object-fit: contain;
-    display: block;
-    background: #000;
+    object-fit: contain; display: block; background: #000;
 }
 
 .showreel-modal-close {
-    position: absolute;
-    top: 20px; right: 20px;
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(8px);
+    position: absolute; top: 20px; right: 20px;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(0,0,0,0.5); backdrop-filter: blur(8px);
     border: 1px solid rgba(255,255,255,0.15);
-    color: #fff; font-size: 15px;
-    cursor: pointer;
+    color: #fff; font-size: 15px; cursor: pointer;
     display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s;
-    z-index: 1;
+    transition: background 0.2s; z-index: 1;
 }
 
 .showreel-modal-close:hover { background: rgba(0,0,0,0.75); }
 
-/* ══════════════════════════════════
-   СЕКЦИЯ-ОБЁРТКА
-══════════════════════════════════ */
 .section-wrap {
-    padding: 100px 48px;
-    max-width: 1360px;
-    margin: 0 auto;
-    text-align: center;
+    padding: 100px 48px; max-width: 1360px;
+    margin: 0 auto; text-align: center;
 }
 
 .section-eyebrow {
@@ -337,58 +255,37 @@ nav.scrolled .nav-pill {
 }
 
 .section-heading {
-    font-size: clamp(38px,5vw,62px);
-    font-weight:600;
-    letter-spacing:-0.02em;
-    line-height:1.05;
-    margin-bottom:56px;
-    color:var(--text);
+    font-size: clamp(38px,5vw,62px); font-weight:600;
+    letter-spacing:-0.02em; line-height:1.05;
+    margin-bottom:56px; color:var(--text);
 }
 
 .section-heading-italic {
     font-family: 'Playfair Display', Georgia, serif;
     font-style: italic;
-    font-size: clamp(44px,6vw,76px);
-    font-weight:600;
-    letter-spacing:-0.01em;
-    line-height:1.0;
-    margin-bottom:56px;
-    color: var(--text);
+    font-size: clamp(44px,6vw,76px); font-weight:600;
+    letter-spacing:-0.01em; line-height:1.0;
+    margin-bottom:56px; color: var(--text);
 }
 
-.section-divider {
-    border:none;
-    border-top: 1px solid rgba(110,200,130,0.1);
-}
+.section-divider { border:none; border-top: 1px solid rgba(110,200,130,0.1); }
 
-/* ══════════════════════════════════
-   УСЛУГИ — простые белые карточки
-══════════════════════════════════ */
 .services-outer { padding-top:1px; }
 
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 18px;
-    max-width: 900px;
-    margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 18px; max-width: 900px; margin: 0 auto;
 }
 
 .service-card {
     background: rgba(255,255,255,0.93);
-    border-radius: 20px;
-    overflow: hidden;
-    cursor: pointer;
-    text-decoration: none;
-    color: #1a1a1a;
+    border-radius: 20px; overflow: hidden;
+    cursor: pointer; text-decoration: none; color: #1a1a1a;
     box-shadow: 0 8px 32px rgba(0,0,0,0.28);
     transition: transform 0.5s cubic-bezier(.23,1,.32,1), box-shadow 0.5s;
     will-change: transform;
     padding: 44px 20px 36px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
+    display: flex; flex-direction: column; align-items: center; gap: 16px;
 }
 
 .service-card:hover {
@@ -397,105 +294,70 @@ nav.scrolled .nav-pill {
 }
 
 .svc-icon {
-    font-size: 44px;
-    color: #1a1a1a;
-    opacity: 0.7;
-    line-height: 1;
-    transition: opacity 0.3s;
+    font-size: 44px; color: #1a1a1a;
+    opacity: 0.7; line-height: 1; transition: opacity 0.3s;
 }
 
 .service-card:hover .svc-icon { opacity: 1; }
 
 .svc-name {
-    font-size: 18px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    color: #1a1a1a;
-    text-align: center;
+    font-size: 18px; font-weight: 600;
+    letter-spacing: -0.01em; color: #1a1a1a; text-align: center;
 }
 
-/* ══════════════════════════════════
-   КЛИЕНТЫ — паутина
-══════════════════════════════════ */
-.clients-outer { }
+.clients-outer {}
 
-.clients-stage {
-    position:relative; width:100%; height:780px;
-}
+.clients-stage { position:relative; width:100%; height:780px; }
 
 .client-node {
-    position:absolute;
-    display:flex; flex-direction:column;
+    position:absolute; display:flex; flex-direction:column;
     align-items:center; gap:12px;
-    cursor:pointer; will-change:transform;
-    text-decoration:none;
+    cursor:pointer; will-change:transform; text-decoration:none;
 }
 
-.client-logo-wrap {
-    position:relative;
-    width:200px; height:200px;
-}
+.client-logo-wrap { position:relative; width:200px; height:200px; }
 
 .client-logo-img {
-    width:200px; height:200px;
-    object-fit:contain;
-    opacity:0.55;
-    filter: grayscale(1) brightness(1.8);
+    width:200px; height:200px; object-fit:contain;
+    opacity:0.55; filter: grayscale(1) brightness(1.8);
     mix-blend-mode: screen;
     transition: opacity 0.45s, filter 0.45s, transform 0.45s;
     display:block; position:relative; z-index:1;
 }
 
 .client-glow {
-    position:absolute; inset:10%;
-    border-radius:50%;
+    position:absolute; inset:10%; border-radius:50%;
     background: radial-gradient(circle, rgba(110,200,130,0.22) 0%, transparent 70%);
-    opacity:0; filter:blur(20px);
-    transition:opacity 0.45s;
+    opacity:0; filter:blur(20px); transition:opacity 0.45s;
     z-index:0; pointer-events:none;
 }
 
 .client-node:hover .client-logo-img {
-    opacity:1;
-    filter: grayscale(0) brightness(1.1);
-    mix-blend-mode: screen;
-    transform: scale(1.08) translateY(-6px);
+    opacity:1; filter: grayscale(0) brightness(1.1);
+    mix-blend-mode: screen; transform: scale(1.08) translateY(-6px);
 }
 
 .client-node:hover .client-glow { opacity:1; }
 
 .client-name {
     font-size:10px; font-weight:300;
-    color:rgba(180,230,190,0.28);
-    letter-spacing:0.08em;
-    text-align:center; white-space:nowrap;
-    transition:color 0.35s;
+    color:rgba(180,230,190,0.28); letter-spacing:0.08em;
+    text-align:center; white-space:nowrap; transition:color 0.35s;
 }
 
 .client-node:hover .client-name { color:rgba(180,230,190,0.7); }
 
 .clients-web-svg {
-    position:absolute; inset:0;
-    width:100%; height:100%;
-    pointer-events:none;
+    position:absolute; inset:0; width:100%; height:100%; pointer-events:none;
 }
 
-/* ══════════════════════════════════
-   ВИДЕО-ПЛИТКИ — YouTube + Liquid Glass
-══════════════════════════════════ */
 .video-grid {
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
-    padding:40px 48px;
-    max-width:1360px;
-    margin:0 auto;
+    display:grid; grid-template-columns:repeat(2,1fr);
+    gap:20px; padding:40px 48px; max-width:1360px; margin:0 auto;
 }
 
 .video-item {
-    position:relative;
-    border-radius:20px;
-    overflow:hidden;
+    position:relative; border-radius:20px; overflow:hidden;
     aspect-ratio:16/9;
     background: rgba(8,24,12,0.55);
     border: 1px solid rgba(110,200,130,0.16);
@@ -512,45 +374,30 @@ nav.scrolled .nav-pill {
 .video-item:hover {
     transform: translateY(-4px);
     border-color: rgba(110,200,130,0.32);
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.14),
-        0 28px 64px rgba(0,0,0,0.65);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.14), 0 28px 64px rgba(0,0,0,0.65);
 }
 
-/* YouTube превью (thumbnail) */
-.video-thumb-wrap {
-    position: absolute; inset: 0;
-    overflow: hidden;
-}
+.video-thumb-wrap { position: absolute; inset: 0; overflow: hidden; }
 
 .video-thumb-img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    transition: filter 0.4s, transform 0.4s;
-    display: block;
+    width: 100%; height: 100%; object-fit: cover;
+    transition: filter 0.4s, transform 0.4s; display: block;
 }
 
-.video-item:hover .video-thumb-img {
-    filter: brightness(0.28);
-    transform: scale(1.03);
-}
+.video-item:hover .video-thumb-img { filter: brightness(0.28); transform: scale(1.03); }
 
-/* Оверлей с названием */
 .video-info-overlay {
     position:absolute; inset:0;
     display:flex; flex-direction:column;
     justify-content:center; align-items:center;
-    padding:28px; opacity:0;
-    transition:opacity 0.35s;
-    text-align:center; pointer-events:none;
-    z-index:2;
+    padding:28px; opacity:0; transition:opacity 0.35s;
+    text-align:center; pointer-events:none; z-index:2;
 }
 
 .video-item:hover .video-info-overlay { opacity:1; }
 
 .play-icon {
-    width:52px; height:52px;
-    border-radius:50%;
+    width:52px; height:52px; border-radius:50%;
     background: rgba(110,200,130,0.18);
     border: 1px solid rgba(110,200,130,0.4);
     display:flex; align-items:center; justify-content:center;
@@ -559,50 +406,28 @@ nav.scrolled .nav-pill {
 
 .video-title {
     font-size:20px; font-weight:600;
-    letter-spacing:-0.01em; margin-bottom:5px;
-    color:var(--text);
+    letter-spacing:-0.01em; margin-bottom:5px; color:var(--text);
 }
 
-.video-year {
-    font-size:12px; color:var(--muted);
-    letter-spacing:0.07em;
-}
+.video-year { font-size:12px; color:var(--muted); letter-spacing:0.07em; }
 
-.single-item {
-    grid-column:1/-1;
-    display:flex; justify-content:center;
-}
-
+.single-item { grid-column:1/-1; display:flex; justify-content:center; }
 .single-item .video-item { width:50%; }
 
-/* ══════════════════════════════════
-   МОДАЛКА
-══════════════════════════════════ */
 .modal {
     display:none; position:fixed; inset:0;
     background:rgba(4,10,6,0.94);
-    backdrop-filter:blur(28px);
-    -webkit-backdrop-filter:blur(28px);
-    z-index:2000;
-    justify-content:center; align-items:center;
+    backdrop-filter:blur(28px); -webkit-backdrop-filter:blur(28px);
+    z-index:2000; justify-content:center; align-items:center;
 }
 
 .modal.active { display:flex; }
 
 .modal-iframe-wrap {
-    width: 90%;
-    max-width: 1100px;
-    aspect-ratio: 16/9;
-    border-radius: 18px;
-    overflow: hidden;
+    width: 90%; max-width: 1100px; aspect-ratio: 16/9;
+    border-radius: 18px; overflow: hidden;
     border: 1px solid rgba(110,200,130,0.2);
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 30px 80px rgba(0,0,0,0.7);
-}
-
-#modalIframe {
-    width: 100%; height: 100%;
-    border: none;
-    display: block;
 }
 
 .close-modal {
@@ -610,17 +435,13 @@ nav.scrolled .nav-pill {
     width:36px; height:36px; border-radius:50%;
     background:rgba(110,200,130,0.1);
     border:1px solid rgba(110,200,130,0.2);
-    color:var(--text); font-size:15px;
-    cursor:pointer;
+    color:var(--text); font-size:15px; cursor:pointer;
     display:flex; align-items:center; justify-content:center;
     transition:background 0.2s; z-index:2001;
 }
 
 .close-modal:hover { background:rgba(110,200,130,0.2); }
 
-/* ══════════════════════════════════
-   АДАПТИВ
-══════════════════════════════════ */
 @media (max-width:1024px) {
     .services-grid { grid-template-columns:repeat(2,1fr); }
 }
@@ -638,19 +459,15 @@ nav.scrolled .nav-pill {
 </head>
 <body>
 
-<!-- Шум -->
 <div class="noise-overlay"></div>
-<!-- Фоновый холст -->
 <canvas id="bgCanvas"></canvas>
 
-<!-- Фиксированная кнопка -->
 <div class="contact-fixed">
     <a href="https://t.me/nghtwrkr" target="_blank" class="contact-button">
         <i class="fab fa-telegram"></i> Contact me
     </a>
 </div>
 
-<!-- Навигация -->
 <nav id="mainNav">
     <div class="logo">
         Oleg Gyulumyan
@@ -666,71 +483,54 @@ nav.scrolled .nav-pill {
     </div>
 </nav>
 
-<!-- ═══════════════════════════════════════════
-     SHOWREEL PAGE
-═══════════════════════════════════════════ -->
 <section id="showreel-page" class="page-content active">
 
-    <!-- Hero -->
     <div class="showreel-hero">
         <div class="video-loading">Loading...</div>
-        <!-- Замени src: videos/showreel_2024.mp4 -->
         <video id="showreelVideo" autoplay muted loop playsinline>
             <source src="showreel.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
-
-        <!-- Кнопка Watch Showreel -->
         <div class="hero-play-wrap">
             <button class="hero-play-btn" id="openShowreel">
                 <span class="hero-play-icon">▶</span>
                 <span>Watch Showreel</span>
             </button>
         </div>
-
         <span class="scroll-hint">↓ scroll</span>
     </div>
 
     <hr class="section-divider">
 
-    <!-- УСЛУГИ -->
     <div class="services-outer">
         <div class="section-wrap">
             <div class="section-eyebrow">Express your vision</div>
             <h2 class="section-heading-italic">In any way</h2>
-
             <div class="services-grid">
-
                 <a class="service-card" href="#motion" data-page="motion">
                     <span class="svc-icon"><i class="fas fa-film"></i></span>
                     <span class="svc-name">Motion Design</span>
                 </a>
-
                 <a class="service-card" href="#cgi" data-page="cgi">
                     <span class="svc-icon"><i class="fas fa-cube"></i></span>
                     <span class="svc-name">CGI & 3D</span>
                 </a>
-
                 <a class="service-card" href="#longform" data-page="longform">
                     <span class="svc-icon"><i class="fas fa-video"></i></span>
                     <span class="svc-name">Longform</span>
                 </a>
-
             </div>
         </div>
     </div>
 
     <hr class="section-divider">
 
-    <!-- КЛИЕНТЫ -->
     <div class="clients-outer">
         <div class="section-wrap" style="padding-bottom:0; padding-top:80px;">
             <div class="section-eyebrow">Trusted by</div>
             <h2 class="section-heading-italic">50+ Clients</h2>
         </div>
-
         <div style="height:60px;"></div>
-
         <div class="clients-stage" id="clientsStage">
             <svg class="clients-web-svg" id="clientsWebSvg"></svg>
         </div>
@@ -738,22 +538,18 @@ nav.scrolled .nav-pill {
 
 </section>
 
-<!-- Motion -->
 <section id="motion-page" class="page-content">
     <div class="video-grid" id="motion-grid"></div>
 </section>
 
-<!-- CGI -->
 <section id="cgi-page" class="page-content">
     <div class="video-grid" id="cgi-grid"></div>
 </section>
 
-<!-- Longform -->
 <section id="longform-page" class="page-content">
     <div class="video-grid" id="longform-grid"></div>
 </section>
 
-<!-- Модалка -->
 <div class="modal" id="videoModal">
     <button class="close-modal" id="closeModal">✕</button>
     <div class="modal-iframe-wrap">
@@ -761,35 +557,34 @@ nav.scrolled .nav-pill {
     </div>
 </div>
 
+<div class="showreel-modal" id="showreelModal">
+    <div class="showreel-modal-wrap">
+        <video id="showreelModalVideo" controls playsinline>
+            <source src="showreel.mp4" type="video/mp4">
+        </video>
+        <button class="showreel-modal-close" id="closeShowreelModal">✕</button>
+    </div>
+</div>
+
 <script>
-/* ════════════════════════════════════════════
-   ЗЕЛЁНЫЙ АНИМИРОВАННЫЙ ФОН + ЧАСТИЦЫ
-════════════════════════════════════════════ */
 (function() {
     const canvas = document.getElementById('bgCanvas');
     const ctx    = canvas.getContext('2d');
-
     const orbs = [
         { x:0.15, y:0.20, r:0.60, vx: 0.000024, vy: 0.000016, color:[20,90,40]  },
         { x:0.78, y:0.60, r:0.55, vx:-0.000018, vy:-0.000013, color:[15,70,30]  },
         { x:0.50, y:0.88, r:0.45, vx: 0.000014, vy:-0.000019, color:[25,110,50] },
         { x:0.72, y:0.10, r:0.38, vx:-0.000020, vy: 0.000022, color:[10,60,25]  },
     ];
-
     const PCOUNT = 70;
     let particles = [];
-
     function mkParticle() {
         return {
-            x:     Math.random() * canvas.width,
-            y:     Math.random() * canvas.height,
-            size:  Math.random() * 1.4 + 0.3,
-            alpha: Math.random() * 0.22 + 0.04,
-            vx:   (Math.random() - 0.5) * 0.1,
-            vy:   -(Math.random() * 0.07 + 0.025),
+            x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+            size: Math.random() * 1.4 + 0.3, alpha: Math.random() * 0.22 + 0.04,
+            vx: (Math.random() - 0.5) * 0.1, vy: -(Math.random() * 0.07 + 0.025),
         };
     }
-
     function resize() {
         canvas.width  = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -797,21 +592,17 @@ nav.scrolled .nav-pill {
     }
     window.addEventListener('resize', resize);
     resize();
-
     function draw() {
         const W = canvas.width, H = canvas.height;
         ctx.clearRect(0,0,W,H);
-
         ctx.fillStyle = '#06100a';
         ctx.fillRect(0,0,W,H);
-
         orbs.forEach(o => {
             o.x += o.vx; o.y += o.vy;
             if (o.x < -0.1) o.vx =  Math.abs(o.vx);
             if (o.x >  1.1) o.vx = -Math.abs(o.vx);
             if (o.y < -0.1) o.vy =  Math.abs(o.vy);
             if (o.y >  1.1) o.vy = -Math.abs(o.vy);
-
             const cx = o.x*W, cy = o.y*H, r = o.r*Math.max(W,H);
             const g  = ctx.createRadialGradient(cx,cy,0,cx,cy,r);
             const [rr,gg,bb] = o.color;
@@ -821,7 +612,6 @@ nav.scrolled .nav-pill {
             ctx.fillStyle = g;
             ctx.fillRect(0,0,W,H);
         });
-
         particles.forEach(p => {
             p.x += p.vx; p.y += p.vy;
             if (p.y < -4) { p.x = Math.random()*W; p.y = H+4; }
@@ -830,17 +620,11 @@ nav.scrolled .nav-pill {
             ctx.fillStyle = `rgba(140,220,160,${p.alpha})`;
             ctx.fill();
         });
-
         requestAnimationFrame(draw);
     }
     draw();
 })();
 
-/* ════════════════════════════════════════════
-   ДАННЫЕ ВИДЕО — локальные файлы
-   Файлы должны лежать в папках:
-   videos/motion/, videos/cgi/, videos/longform/
-════════════════════════════════════════════ */
 const videoData = {
     motion: [
         { title:"Appetise",           year:"2026", src:"videos/motion/Appetise_1.mp4"  },
@@ -851,14 +635,14 @@ const videoData = {
         { title:"Tropos AR",          year:"2024", src:"videos/motion/TroposAR.MP4"    },
     ],
     cgi: [
-        { title:"something.cool",            year:"2025", src:"videos/cgi/somethingcool.MP4" },
-        { title:"Summit Metalls",            year:"2024", src:"videos/cgi/SummitMetalls.mp4" },
-        { title:"Travel Motion",             year:"2026", src:"videos/cgi/Travel.mp4"        },
-        { title:"$GAMBLE",                   year:"2025", src:"videos/cgi/casino.MP4"        },
-        { title:"$BASICMAN",                 year:"2025", src:"videos/cgi/lego.MP4"          },
-        { title:"Teaser for Thatkidnasty4",  year:"2025", src:"videos/cgi/teaser1.MP4"       },
-        { title:"Teaser for MARSY",          year:"2025", src:"videos/cgi/teaser2.MP4"       },
-        { title:"$YIPPEE",                   year:"2025", src:"videos/cgi/yipe.MP4"          },
+        { title:"something.cool",           year:"2025", src:"videos/cgi/somethingcool.MP4" },
+        { title:"Summit Metalls",           year:"2024", src:"videos/cgi/SummitMetalls.mp4" },
+        { title:"Travel Motion",            year:"2026", src:"videos/cgi/Travel.mp4"        },
+        { title:"$GAMBLE",                  year:"2025", src:"videos/cgi/casino.MP4"        },
+        { title:"$BASICMAN",                year:"2025", src:"videos/cgi/lego.MP4"          },
+        { title:"Teaser for Thatkidnasty4", year:"2025", src:"videos/cgi/teaser1.MP4"       },
+        { title:"Teaser for MARSY",         year:"2025", src:"videos/cgi/teaser2.MP4"       },
+        { title:"$YIPPEE",                  year:"2025", src:"videos/cgi/yipe.MP4"          },
     ],
     longform: [
         { title:"Friends IRL",   year:"2026", src:"videos/longform/friends.mp4" },
@@ -866,122 +650,78 @@ const videoData = {
     ]
 };
 
-/* ════════════════════════════════════════════
-   ДАННЫЕ КЛИЕНТОВ
-════════════════════════════════════════════ */
 const clientsData = [
-    { name:"Appetise",           img:"logos/Appetise.png",      url:"https://appetise.io/"             },
-    { name:"CXL",                img:"logos/CXL.png",           url:"https://cxl.com/"                 },
-    { name:"Green Climate Fund", img:"logos/GCF.png",           url:"https://www.greenclimate.fund/"   },
-    { name:"Gigawatt",           img:"logos/Gigawatt.png",      url:"https://gigawatt.ai/"             },
-    { name:"Kati CRM",           img:"logos/KatiCRM.png",       url:"https://katicrm.com/"             },
-    { name:"Messe München",      img:"logos/MesseMunchen.png",  url:"https://messe-muenchen.de/en/"    },
-    { name:"Minea",              img:"logos/Minea.png",         url:"https://app.minea.com/"           },
-    { name:"Summit Metals",      img:"logos/SummitMetalls.png", url:"https://summitmetals.com/"        },
-    { name:"Tropos AR",          img:"logos/Tropos AR.png",     url:"https://www.tropos.ar/"           },
+    { name:"Appetise",           img:"logos/Appetise.png",      url:"https://appetise.io/"           },
+    { name:"CXL",                img:"logos/CXL.png",           url:"https://cxl.com/"               },
+    { name:"Green Climate Fund", img:"logos/GCF.png",           url:"https://www.greenclimate.fund/" },
+    { name:"Gigawatt",           img:"logos/Gigawatt.png",      url:"https://gigawatt.ai/"           },
+    { name:"Kati CRM",           img:"logos/KatiCRM.png",       url:"https://katicrm.com/"           },
+    { name:"Messe München",      img:"logos/MesseMunchen.png",  url:"https://messe-muenchen.de/en/"  },
+    { name:"Minea",              img:"logos/Minea.png",         url:"https://app.minea.com/"         },
+    { name:"Summit Metals",      img:"logos/SummitMetalls.png", url:"https://summitmetals.com/"      },
+    { name:"Tropos AR",          img:"logos/Tropos AR.png",     url:"https://www.tropos.ar/"         },
 ];
 
-/* ════════════════════════════════════════════
-   SCROLL NAV — плавная анимация pill к центру
-════════════════════════════════════════════ */
 (function() {
     const nav  = document.getElementById('mainNav');
     const pill = nav.querySelector('.nav-pill');
-    const logo = nav.querySelector('.logo');
-
     let isScrolled = false;
     let cachedDx   = null;
-
     function calcDx() {
-        // Сбрасываем transform чтобы измерить реальное начальное положение
         pill.style.transition = 'none';
         pill.style.transform  = 'translateX(0)';
-
         const navRect  = nav.getBoundingClientRect();
         const pillRect = pill.getBoundingClientRect();
-
-        const pillCenterX  = pillRect.left - navRect.left + pillRect.width / 2;
-        const navCenterX   = navRect.width / 2;
-        return navCenterX - pillCenterX;
+        return (navRect.width / 2) - (pillRect.left - navRect.left + pillRect.width / 2);
     }
-
     function update(animate) {
         if (isScrolled) {
             if (cachedDx === null) cachedDx = calcDx();
-            // Даём браузеру применить сброс transform перед анимацией
             requestAnimationFrame(() => {
-                pill.style.transition = animate
-                    ? 'transform 0.55s cubic-bezier(.4,0,.2,1), box-shadow 0.45s'
-                    : 'none';
+                pill.style.transition = animate ? 'transform 0.55s cubic-bezier(.4,0,.2,1), box-shadow 0.45s' : 'none';
                 pill.style.transform = `translateX(${cachedDx}px)`;
                 nav.classList.add('scrolled');
             });
         } else {
             cachedDx = null;
-            pill.style.transition = animate
-                ? 'transform 0.55s cubic-bezier(.4,0,.2,1), box-shadow 0.45s'
-                : 'none';
+            pill.style.transition = animate ? 'transform 0.55s cubic-bezier(.4,0,.2,1), box-shadow 0.45s' : 'none';
             pill.style.transform = 'translateX(0)';
             nav.classList.remove('scrolled');
         }
     }
-
     window.addEventListener('scroll', () => {
-        const y = window.scrollY;
         const wasScrolled = isScrolled;
-        isScrolled = y > 80;
+        isScrolled = window.scrollY > 80;
         if (isScrolled !== wasScrolled) update(true);
     }, { passive: true });
-
-    window.addEventListener('resize', () => {
-        cachedDx = null;
-        update(false);
-    });
-
+    window.addEventListener('resize', () => { cachedDx = null; update(false); });
     update(false);
 })();
 
-/* ════════════════════════════════════════════
-   SERVICE CARDS — gentle float on hover (JS not needed, CSS handles it)
-════════════════════════════════════════════ */
-function init3DCards() {
-    // Убрали 3D rotate — карточки ведут себя спокойно через CSS
-}
+function init3DCards() {}
 
-/* ════════════════════════════════════════════
-   ПАУТИНА КЛИЕНТОВ
-════════════════════════════════════════════ */
 (function initClients() {
-    const stage   = document.getElementById('clientsStage');
-    const svg     = document.getElementById('clientsWebSvg');
-
+    const stage = document.getElementById('clientsStage');
+    const svg   = document.getElementById('clientsWebSvg');
     const W = () => stage.offsetWidth;
     const H = () => stage.offsetHeight;
-
     const positions = [
         {x:0.18,y:0.07},{x:0.47,y:0.04},{x:0.76,y:0.09},
         {x:0.27,y:0.40},{x:0.55,y:0.36},{x:0.83,y:0.42},
         {x:0.16,y:0.73},{x:0.45,y:0.70},{x:0.74,y:0.75},
     ];
-
     const edges = [
-        [0,1],[1,2],
-        [0,3],[1,3],[1,4],[2,4],[2,5],
-        [3,4],[4,5],
-        [3,6],[4,6],[4,7],[5,7],[5,8],
-        [6,7],[7,8],
+        [0,1],[1,2],[0,3],[1,3],[1,4],[2,4],[2,5],
+        [3,4],[4,5],[3,6],[4,6],[4,7],[5,7],[5,8],[6,7],[7,8],
     ];
-
     let nodes = [];
     let mouseNorm = {x:0,y:0};
     let scrollY   = 0;
-
     clientsData.forEach((c,i) => {
         const p  = positions[i];
         const el = document.createElement('a');
         el.className='client-node';
         el.href=c.url; el.target='_blank'; el.rel='noopener noreferrer';
-
         const wrap = document.createElement('div');
         wrap.className='client-logo-wrap';
         const glow = document.createElement('div');
@@ -990,17 +730,13 @@ function init3DCards() {
         img.className='client-logo-img';
         img.src=c.img; img.alt=c.name;
         wrap.appendChild(glow); wrap.appendChild(img);
-
         const nameEl = document.createElement('div');
         nameEl.className='client-name';
         nameEl.textContent=c.name;
-
         el.appendChild(wrap); el.appendChild(nameEl);
         stage.appendChild(el);
-
         nodes.push({el, baseX:p.x, baseY:p.y, ox:0, oy:0, depth:0.4+Math.random()*0.5});
     });
-
     const lines = edges.map(([a,b])=>{
         const line=document.createElementNS('http://www.w3.org/2000/svg','line');
         line.setAttribute('stroke','rgba(110,200,130,0.06)');
@@ -1008,13 +744,8 @@ function init3DCards() {
         svg.appendChild(line);
         return {line,a,b};
     });
-
-    function getPos(n) {
-        return { x:n.baseX*W()+n.ox, y:n.baseY*H()+n.oy };
-    }
-
+    function getPos(n) { return { x:n.baseX*W()+n.ox, y:n.baseY*H()+n.oy }; }
     const MOUSE_STRENGTH=10, RESTORE=0.03;
-
     function tick() {
         nodes.forEach(n=>{
             const tx = mouseNorm.x*MOUSE_STRENGTH*n.depth;
@@ -1024,16 +755,13 @@ function init3DCards() {
             const pos=getPos(n);
             n.el.style.transform=`translate(${pos.x-100}px,${pos.y-100}px)`;
         });
-
         lines.forEach(({line,a,b})=>{
             const pa=getPos(nodes[a]), pb=getPos(nodes[b]);
             line.setAttribute('x1',pa.x); line.setAttribute('y1',pa.y);
             line.setAttribute('x2',pb.x); line.setAttribute('y2',pb.y);
         });
-
         requestAnimationFrame(tick);
     }
-
     document.addEventListener('mousemove', e=>{
         mouseNorm.x=(e.clientX/window.innerWidth -0.5);
         mouseNorm.y=(e.clientY/window.innerHeight-0.5);
@@ -1042,9 +770,6 @@ function init3DCards() {
     tick();
 })();
 
-/* ════════════════════════════════════════════
-   ИНИЦИАЛИЗАЦИЯ
-════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded',()=>{
     setupShowreelVideo();
     createVideoGrid('motion',  'motion-grid',  6);
@@ -1060,9 +785,9 @@ function setupShowreelVideo() {
     const vid=document.getElementById('showreelVideo');
     const lbl=document.querySelector('.video-loading');
     vid.addEventListener('loadeddata',()=>lbl.style.display='none');
-    vid.addEventListener('error',()=>{ lbl.textContent='Добавь файл: videos/showreel_2024.mp4'; });
+    vid.addEventListener('error',()=>{ lbl.textContent=''; });
     vid.play().catch(()=>{
-        lbl.textContent='Нажмите для воспроизведения';
+        lbl.textContent='';
         lbl.style.cursor='pointer';
         lbl.addEventListener('click',()=>vid.play().then(()=>lbl.style.display='none'));
     });
@@ -1087,10 +812,9 @@ function createVideoGrid(category,gridId,count,specialLayout=false) {
 function createVideoItem(video) {
     const item = document.createElement('div');
     item.className = 'video-item';
-
     item.innerHTML = `
         <div class="video-thumb-wrap">
-            <video class="video-thumb-img" muted loop playsinline preload="metadata">
+            <video class="video-thumb-img" muted loop playsinline preload="none">
                 <source src="${video.src}" type="video/mp4">
             </video>
         </div>
@@ -1099,7 +823,6 @@ function createVideoItem(video) {
             <div class="video-title">${video.title}</div>
             <div class="video-year">${video.year}</div>
         </div>`;
-
     const vid = item.querySelector('video');
     item.addEventListener('mouseenter', () => vid.play().catch(() => {}));
     item.addEventListener('mouseleave', () => { vid.pause(); vid.currentTime = 0; });
@@ -1118,7 +841,6 @@ function setupNavigation() {
             window.scrollTo({top:0,behavior:'smooth'});
         });
     });
-
     document.querySelectorAll('.service-card[data-page]').forEach(card=>{
         card.addEventListener('click',e=>{
             e.preventDefault();
@@ -1156,14 +878,12 @@ function stopAllVideos() {
 function setupModal() {
     const modal = document.getElementById('videoModal');
     const mv    = document.getElementById('modalVideo');
-
     const close = () => {
         modal.classList.remove('active');
         mv.pause(); mv.removeAttribute('src');
         if (document.getElementById('showreel-page')?.classList.contains('active'))
             document.getElementById('showreelVideo').play().catch(() => {});
     };
-
     document.getElementById('closeModal').addEventListener('click', close);
     modal.addEventListener('click', e => { if (e.target === modal) close(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
@@ -1186,44 +906,27 @@ window.addEventListener('hashchange',()=>{
 const initH=window.location.hash.substring(1)||'showreel';
 setActiveNav(initH); showPage(initH);
 
-/* ════════════════════════════════════════════
-   SHOWREEL MODAL — полный экран со звуком
-════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded', function() {
     const modal    = document.getElementById('showreelModal');
     const modalVid = document.getElementById('showreelModalVideo');
     const openBtn  = document.getElementById('openShowreel');
     const closeBtn = document.getElementById('closeShowreelModal');
-
     if (!modal || !openBtn) return;
-
     function openModal() {
         modal.classList.add('active');
         modalVid.currentTime = 0;
         modalVid.play().catch(() => {});
     }
-
     function closeModal() {
         modal.classList.remove('active');
         modalVid.pause();
         modalVid.currentTime = 0;
     }
-
     openBtn.addEventListener('click', openModal);
     closeBtn.addEventListener('click', closeModal);
     modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
     document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
 });
 </script>
-<!-- Модалка шоурила -->
-<div class="showreel-modal" id="showreelModal">
-    <div class="showreel-modal-wrap">
-        <video id="showreelModalVideo" controls playsinline>
-            <source src="showreel.mp4" type="video/mp4">
-        </video>
-        <button class="showreel-modal-close" id="closeShowreelModal">✕</button>
-    </div>
-</div>
-
 </body>
 </html>
