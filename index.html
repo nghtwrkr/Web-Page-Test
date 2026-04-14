@@ -43,7 +43,7 @@ nav{position:fixed;top:14px;left:20px;right:20px;z-index:1000;height:52px;paddin
 .contact-btn-fixed:hover{background:rgba(232,240,236,0.15);transform:translateY(-2px);}
 
 /* LAYOUT */
-.landing{padding:80px 0 0;}
+.landing{padding:0;}
 .sec{padding:0 20px;margin-bottom:var(--gap);}.sec.dark{padding:0;margin-bottom:0;}
 .block{border-radius:var(--r);overflow:hidden;position:relative;}
 
@@ -52,7 +52,7 @@ nav{position:fixed;top:14px;left:20px;right:20px;z-index:1000;height:52px;paddin
 .fu.vis{opacity:1;transform:none;}
 
 /* HERO */
-.block-hero{min-height:72vh;background:var(--bg);display:flex;flex-direction:column;justify-content:flex-end;padding:60px 72px 64px;margin:0;border-radius:0;}
+.block-hero{min-height:calc(100vh - 94px);background:var(--bg);display:flex;flex-direction:column;justify-content:flex-end;padding:60px 72px 64px;margin:80px 20px 0;border-radius:14px;border:1px solid rgba(74,219,165,0.12);}
 #auroraCanvas{position:absolute;inset:0;width:100%;height:100%;display:block;}
 .hero-inner{position:relative;z-index:2;max-width:100%;}
 .hero-sub{font-size:clamp(14px,1.6vw,22px);font-weight:400;letter-spacing:0.04em;color:rgba(232,240,236,0.55);margin-top:16px;margin-bottom:0;text-transform:uppercase;}
@@ -60,68 +60,24 @@ nav{position:fixed;top:14px;left:20px;right:20px;z-index:1000;height:52px;paddin
 @keyframes glowCycle{0%,68%,100%{text-shadow:none;}78%{text-shadow:0 0 80px rgba(74,219,165,0.5),0 0 160px rgba(74,219,165,0.22);}84%{text-shadow:0 0 120px rgba(74,219,165,0.72),0 0 240px rgba(74,219,165,0.32);}}
 
 /* SHOWREEL */
-.block-showreel{background:var(--bg);padding:72px 72px;display:block;}
+.block-showreel{background:var(--bg);padding:0;display:block;}
 .sr-heading{margin-bottom:28px;text-align:right;padding-top:32px;}
 .sr-heading h2{font-size:clamp(36px,6vw,96px);font-weight:800;letter-spacing:-0.03em;line-height:0.9;color:var(--accent);margin-bottom:12px;}
 .sr-heading p{font-size:clamp(13px,1.2vw,15px);font-weight:400;letter-spacing:0.12em;color:var(--muted);text-transform:uppercase;}
 .sr-player{width:100%;border-radius:14px;overflow:hidden;aspect-ratio:16/9;background:#000;}
 .sr-player video{width:100%;height:100%;object-fit:cover;display:block;}
 .sr-divider{height:1px;background:rgba(232,240,236,0.12);margin:28px 0 36px;}
-.sr-body{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
-.sr-video-wrap{border-radius:14px;overflow:hidden;aspect-ratio:16/9;background:#000;}
+.sr-body{display:block;}
+.sr-video-wrap{border-radius:14px;overflow:hidden;aspect-ratio:21/9;background:#000;width:100%;}
 .sr-video-wrap video{width:100%;height:100%;object-fit:cover;display:block;}
 
-/* stacked cards */
-.sr-stack{position:relative;display:flex;flex-direction:column;gap:0;}
-.sr-card{
-  background:var(--light);
-  border-radius:18px;
-  padding:28px 28px;
-  position:relative;
-  cursor:pointer;
-  margin-bottom:-28px;
-  box-shadow:0 4px 24px rgba(0,0,0,0.18);
-  transition:margin-bottom 0.45s cubic-bezier(.23,1,.32,1),
-             padding-bottom 0.45s cubic-bezier(.23,1,.32,1),
-             box-shadow 0.3s;
-  overflow:hidden;
-  z-index:1;
-}
-.sr-card:nth-child(1){z-index:5;}
-.sr-card:nth-child(2){z-index:4;}
-.sr-card:nth-child(3){z-index:3;}
-.sr-card:nth-child(4){z-index:2;margin-bottom:0;}
-.sr-card.open{margin-bottom:12px;padding-bottom:28px;box-shadow:0 8px 40px rgba(0,0,0,0.22);}
-.sr-card:last-child{margin-bottom:0;}
-.sr-card-head{
-  display:flex;align-items:center;justify-content:space-between;
-  user-select:none;
-}
-.sr-card-head h4{
-  font-size:clamp(20px,2vw,28px);font-weight:800;
-  color:var(--accent);letter-spacing:-0.02em;line-height:1.0;
-}
-.sr-card-icon{
-  font-size:22px;color:var(--accent);
-  transition:transform 0.35s;flex-shrink:0;
-}
-.sr-card.open .sr-card-icon{transform:rotate(45deg);}
-.sr-card-body{
-  max-height:0;overflow:hidden;
-  transition:max-height 0.45s cubic-bezier(.23,1,.32,1);
-}
-.sr-card.open .sr-card-body{max-height:300px;}
-.sr-card-body p{
-  font-size:14px;line-height:1.7;
-  color:rgba(7,14,11,0.65);
-  padding-top:16px;
-}
+
 
 /* WORKFLOW */
 .block-workflow{background:var(--light);border:1px solid rgba(74,219,165,0.08);padding:72px 64px;}
 .wf-headline{font-size:clamp(36px,5.5vw,84px);font-weight:800;letter-spacing:-0.03em;line-height:0.92;color:var(--accent);margin-bottom:56px;}
-.wf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:stretch;}
-.wf-card{background:#fff;border:none;border-radius:18px;padding:28px 24px 24px;position:relative;min-height:420px;display:flex;flex-direction:column;}
+.wf-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:stretch;perspective:1200px;}
+.wf-card{background:#fff;border:none;border-radius:18px;padding:28px 24px 24px;position:relative;min-height:420px;display:flex;flex-direction:column;transform-style:preserve-3d;will-change:transform;box-shadow:0 4px 24px rgba(0,0,0,0.06);}
 .wf-num{position:absolute;top:22px;right:20px;font-size:13px;font-weight:500;color:rgba(7,14,11,0.35);letter-spacing:0.04em;}
 .wf-card h3{font-size:clamp(26px,2.8vw,42px);font-weight:800;color:var(--accent);margin-bottom:16px;letter-spacing:-0.02em;line-height:0.95;text-transform:uppercase;}
 .wf-card p{font-size:13.5px;line-height:1.65;color:rgba(7,14,11,0.6);flex:1;}
@@ -140,15 +96,23 @@ nav{position:fixed;top:14px;left:20px;right:20px;z-index:1000;height:52px;paddin
 }
 
 /* CLIENTS */
-.block-clients{background:var(--bg);padding:72px 72px;}
-.clients-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;margin-bottom:14px;}
-.clients-heading{font-size:clamp(32px,4vw,60px);font-weight:700;letter-spacing:-0.02em;color:var(--text);margin-bottom:52px;}
-.clients-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px 40px;align-items:center;}
-.client-logo-item{display:flex;align-items:center;justify-content:center;padding:16px;}
-.client-logo-item img{width:100%;max-width:200px;height:96px;object-fit:contain;opacity:0.45;filter:grayscale(1) brightness(1.9);mix-blend-mode:screen;transition:opacity 0.35s,filter 0.35s;}
-.client-logo-item img:hover{opacity:0.9;filter:grayscale(0) brightness(1.1);}
-.client-logo-item:nth-child(4n+3){margin-top:48px;}
-.client-logo-item:nth-child(4n+1){margin-top:24px;}
+.block-clients-inner{}
+.block-clients-inner{margin-top:0;padding-top:0;}
+.clients-heading{font-size:clamp(48px,6vw,96px);font-weight:800;letter-spacing:-0.03em;color:var(--dark);margin-bottom:80px;margin-top:80px;}
+.clients-row{display:flex;flex-wrap:nowrap;width:100%;margin-bottom:0;justify-content:space-between;align-items:center;}
+.clients-row.row-even{padding-left:6%;}
+.clients-row.row-odd{padding-left:0;}
+.client-logo-item{
+  display:flex;align-items:center;justify-content:center;
+  padding:24px 16px;flex:1;
+  transition:transform 0.3s;
+}
+.client-logo-item:hover{transform:scale(1.1);}
+.client-logo-item img{
+  width:auto;max-width:200px;height:80px;
+  object-fit:contain;
+  transition:transform 0.3s;
+}
 
 /* PROCESS */
 .process-wrapper{
@@ -156,7 +120,7 @@ nav{position:fixed;top:14px;left:20px;right:20px;z-index:1000;height:52px;paddin
   border-radius:0;
 }
 .process-sticky-outer{
-  height:700vh;
+  height:900vh;
   border-radius:var(--r);
 }
 .process-sticky{
@@ -343,35 +307,14 @@ nav{position:fixed;top:14px;left:20px;right:20px;z-index:1000;height:52px;paddin
     </div>
   </div>
 
-  <div class="sec dark" id="showreel">
+  <div class="sec" id="showreel" style="margin-top:120px;">
     <div class="block block-showreel">
       <div class="sr-heading fu">
         <h2>Check out our last projects</h2>
         <p>2025&#8211;2026 Showreel</p>
       </div>
-      <div class="sr-divider"></div>
-      <div class="sr-body fu" style="transition-delay:.1s">
-        <div class="sr-video-wrap">
-          <video id="showreelVideo" autoplay muted loop playsinline preload="metadata"><source src="showreel.mp4" type="video/mp4"></video>
-        </div>
-        <div class="sr-stack">
-          <div class="sr-card open">
-            <div class="sr-card-head"><h4>Motion Design</h4><span class="sr-card-icon">+</span></div>
-            <div class="sr-card-body"><p>Brand animations, kinetic typography, product reveals and UI motion. Built from scratch to match your visual identity.</p></div>
-          </div>
-          <div class="sr-card">
-            <div class="sr-card-head"><h4>CGI &amp; 3D</h4><span class="sr-card-icon">+</span></div>
-            <div class="sr-card-body"><p>Product visualisation, abstract 3D environments and character animation. Every render is crafted to feel real.</p></div>
-          </div>
-          <div class="sr-card">
-            <div class="sr-card-head"><h4>Longform</h4><span class="sr-card-icon">+</span></div>
-            <div class="sr-card-body"><p>Short films, documentaries, music videos and corporate content. We handle narrative, pacing and final delivery.</p></div>
-          </div>
-          <div class="sr-card">
-            <div class="sr-card-head"><h4>VFX &amp; Compositing</h4><span class="sr-card-icon">+</span></div>
-            <div class="sr-card-body"><p>Live action integration, visual effects and colour grading. We make every frame look intentional.</p></div>
-          </div>
-        </div>
+      <div class="sr-video-wrap fu" style="transition-delay:.1s;margin-top:28px;">
+        <video id="showreelVideo" autoplay muted loop playsinline preload="metadata"><source src="showreel.mp4" type="video/mp4"></video>
       </div>
     </div>
   </div>
@@ -385,14 +328,34 @@ nav{position:fixed;top:14px;left:20px;right:20px;z-index:1000;height:52px;paddin
         <div class="wf-card fu" style="transition-delay:.14s"><span class="wf-num">(III)</span><h3>We own the craft</h3><p>Style, pacing, detail &#8212; that&#8217;s on us. You don&#8217;t manage the process. You approve the result. Every frame is built from scratch. We hold ourselves to a standard your audience will feel &#8212; even if they can&#8217;t explain why.</p><div class="wf-card-img"><img src="images/card_3.jpg" alt="Step 3"></div></div>
         <div class="wf-card fu" style="transition-delay:.2s"><span class="wf-num">(IV)</span><h3>Get something you can actually see</h3><p>Not a mood board. Not a concept deck. A finished piece &#8212; cohesive, sharp, ready to move people.</p><div class="wf-card-img"><img src="images/card_4.jpg" alt="Step 4"></div></div>
       </div>
+    <div class="block-clients-inner">
+      <h2 class="clients-heading fu">Our Clients</h2>
+      <div class="clients-row row-odd">
+        <a class="client-logo-item" href="https://appetise.io/" target="_blank" rel="noopener"><img src="logos/Appetise.png" alt="Appetise"></a>
+        <a class="client-logo-item" href="https://www.cbre.com/" target="_blank" rel="noopener"><img src="logos/cbre.png" alt="CBRE"></a>
+        <a class="client-logo-item" href="https://cxl.com/" target="_blank" rel="noopener"><img src="logos/CXL.png" alt="CXL"></a>
+        <a class="client-logo-item" href="https://dubai-realty.com/" target="_blank" rel="noopener"><img src="logos/elre.png" alt="ELRE"></a>
+        <span class="client-logo-item"><img src="logos/friends.png" alt="Friends"></span>
+      </div>
+      <div class="clients-row row-even">
+        <a class="client-logo-item" href="https://gigawatt.ai/" target="_blank" rel="noopener"><img src="logos/gigawatt.png" alt="Gigawatt"></a>
+        <a class="client-logo-item" href="https://katicrm.com/" target="_blank" rel="noopener"><img src="logos/katicrm.png" alt="Kati CRM"></a>
+        <a class="client-logo-item" href="https://messe-muenchen.de/en/" target="_blank" rel="noopener"><img src="logos/messe.png" alt="Messe"></a>
+        <a class="client-logo-item" href="https://www.minea.com/" target="_blank" rel="noopener"><img src="logos/minea.png" alt="Minea"></a>
+      </div>
+      <div class="clients-row row-odd">
+        <a class="client-logo-item" href="https://parisacosmetics.com/" target="_blank" rel="noopener"><img src="logos/parisa.png" alt="Parisa"></a>
+        <a class="client-logo-item" href="https://www.something.cool/" target="_blank" rel="noopener"><img src="logos/somethingcool.png" alt="Something Cool"></a>
+        <a class="client-logo-item" href="https://source1solutions.com/" target="_blank" rel="noopener"><img src="logos/source.png" alt="Source"></a>
+        <a class="client-logo-item" href="https://strategicrepartners.com/" target="_blank" rel="noopener"><img src="logos/strategic.png" alt="Strategic"></a>
+        <a class="client-logo-item" href="https://summitmetals.com/" target="_blank" rel="noopener"><img src="logos/summitmetalls.png" alt="Summit Metalls"></a>
+      </div>
+      <div class="clients-row row-even">
+        <a class="client-logo-item" href="https://www.tropos.ar/" target="_blank" rel="noopener"><img src="logos/troposar.png" alt="Tropos AR"></a>
+        <a class="client-logo-item" href="https://www.lunacy.ru/" target="_blank" rel="noopener"><img src="logos/lunacy.png" alt="Lunacy"></a>
+        <a class="client-logo-item" href="https://www.greenclimate.fund/" target="_blank" rel="noopener"><img src="logos/gcf.png" alt="GCF"></a>
+      </div>
     </div>
-  </div>
-
-  <div class="sec dark">
-    <div class="block block-clients">
-      <p class="clients-eyebrow fu">Trusted by</p>
-      <h2 class="clients-heading fu" style="transition-delay:.06s">100+ Clients</h2>
-      <div class="clients-grid" id="clientsGrid"></div>
     </div>
   </div>
 
@@ -760,27 +723,21 @@ document.addEventListener('DOMContentLoaded', function() {
     if (!outer || !c || !sticky) return;
     var ctx    = c.getContext('2d');
     var steps  = document.querySelectorAll('.process-step');
-    var NSTEPS = steps.length; // 5
+    var NSTEPS = steps.length;
 
-    var R   = 130;
+    var R   = 400;
     var FOC = 300;
     var pts = [];
 
-    // Camera: starts far back, flies through sphere.
-    // CAM_END is capped so sphere never fully disappears — camera just stops inside it.
-    var CAM_START = -350;
-    var CAM_END   =  R * 0.6; // stop inside sphere, particles remain visible
+    var CAM_START = -650;
+    var CAM_END   =  R * 0.4;
 
-    // Each step occupies an equal slice of flyProg [0..1].
-    // One step visible at a time. Last step = flyProg near 1.
-    // stepsZ[k] = camZ value at center of step k window.
     var stepsZ = [];
     for (var s = 0; s < NSTEPS; s++) {
-      // distribute evenly: step 0 at flyProg=0.1, step 4 at flyProg=0.9
       var fp = 0.10 + (s / (NSTEPS - 1)) * 0.80;
       stepsZ.push(CAM_START + fp * (CAM_END - CAM_START));
     }
-    var STEP_HALF = (CAM_END - CAM_START) * 0.11; // window half-width per step
+    var STEP_HALF = (CAM_END - CAM_START) * 0.11;
 
     function resize(){
       c.width  = sticky.clientWidth  || window.innerWidth;
@@ -789,14 +746,19 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', resize);
     resize();
 
-    for (var i = 0; i < 1400; i++) {
+    for (var i = 0; i < 1000; i++) {
       var theta = Math.random() * Math.PI * 2;
       var phi   = Math.acos(2 * Math.random() - 1);
       var r     = R * (0.72 + Math.random() * 0.55);
       pts.push({
-        x: r * Math.sin(phi) * Math.cos(theta),
-        y: r * Math.sin(phi) * Math.sin(theta),
-        z: r * Math.cos(phi)
+        x:  r * Math.sin(phi) * Math.cos(theta),
+        y:  r * Math.sin(phi) * Math.sin(theta),
+        z:  r * Math.cos(phi),
+        pp: Math.random() * Math.PI * 2,
+        fp: Math.random() * Math.PI * 2,
+        fp2: Math.random() * Math.PI * 2,
+        fs: 0.4 + Math.random() * 0.6,
+        fa: 2 + Math.random() * 4
       });
     }
 
@@ -808,14 +770,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     var animId;
+    var time = 0;
 
     function draw(){
+      time += 0.012;
+
       var W  = c.width, H = c.height;
       var cx = W / 2,   cy = H / 2;
       var prog    = getProgress();
 
-      // Phase 0→0.08: sphere static (intro)
-      // Phase 0.08→1:  fly through
       var flyProg = Math.max(0, (prog - 0.08) / 0.92);
       var camZ    = CAM_START + flyProg * (CAM_END - CAM_START);
 
@@ -825,21 +788,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
       var visible = [];
       for (var i = 0; i < pts.length; i++) {
-        var p     = pts[i];
+        var p = pts[i];
+
+        // Float: gently shift world position over time
+        var floatX = Math.sin(time * p.fs       + p.fp)  * p.fa;
+        var floatY = Math.cos(time * p.fs * 0.7 + p.fp2) * p.fa * 0.6;
+
         var depth = p.z - camZ;
-        if (depth < 3) continue; // clipping plane only — no far-fade removal
+        if (depth < 3) continue;
 
         var scale = FOC / depth;
-        var sx    = cx + p.x * scale;
-        var sy    = cy + p.y * scale;
+        var sx    = cx + (p.x + floatX) * scale;
+        var sy    = cy + (p.y + floatY) * scale;
         if (sx < -120 || sx > W + 120 || sy < -120 || sy > H + 120) continue;
 
-        // brightness by depth: close = bright, far = dim but never invisible
         var t     = Math.min(1, depth / 700);
         var alpha = Math.max(0.08, (1 - t) * 0.80 + 0.08);
-        var size  = Math.max(0.4, Math.min(1.4, (1 - t) * 1.7));
 
-        visible.push({ sx: sx, sy: sy, depth: depth, alpha: alpha, size: size });
+        // Pulse: size oscillates ±30% with individual phase
+        var pulse    = 1 + 0.30 * Math.sin(time * 1.2 + p.pp);
+        var baseSize = Math.max(1.5, Math.min(5, (1 - t) * 6));
+        var size     = baseSize * pulse;
+
+        visible.push({ sx: sx, sy: sy, depth: depth, alpha: alpha, size: size, t: t });
       }
 
       visible.sort(function(a, b){ return b.depth - a.depth; });
@@ -852,15 +823,13 @@ document.addEventListener('DOMContentLoaded', function() {
         ctx.fill();
       }
 
-      // One step at a time: only show step k if camZ is within its window
+      // One step at a time
       for (var k = 0; k < NSTEPS; k++) {
         var show = flyProg > 0.02 &&
                    camZ >= stepsZ[k] - STEP_HALF &&
                    camZ <  stepsZ[k] + STEP_HALF;
         steps[k].classList.toggle('show', show);
       }
-
-
 
       animId = requestAnimationFrame(draw);
     }
@@ -876,15 +845,7 @@ document.addEventListener('DOMContentLoaded', function() {
     io.observe(outer);
   })();
 
-  /* ── CLIENTS ── */
-  var cGrid = document.getElementById('clientsGrid');
-  if (cGrid) {
-    clientsData.forEach(function(c){
-      var div=document.createElement('div'); div.className='client-logo-item';
-      var img=document.createElement('img'); img.src=c.img; img.alt=c.name; img.loading='lazy';
-      div.appendChild(img); cGrid.appendChild(div);
-    });
-  }
+
 
   /* ── VIDEO GALLERY ── */
   function buildVideoItem(video){
@@ -942,6 +903,82 @@ document.addEventListener('DOMContentLoaded', function() {
     if(el) el.scrollIntoView({behavior:'smooth'});
   });
 
+
+  /* ── WORKFLOW CARD 3D TILT ── */
+  (function(){
+    var MAX_TILT = 7;
+    var SCALE    = 1.03;
+    var LERP     = 0.1;
+
+    document.querySelectorAll('.wf-card').forEach(function(card){
+      var target  = { x:0, y:0, s:1 };
+      var current = { x:0, y:0, s:1 };
+      var rafId   = null;
+
+      function lerp(a,b,t){ return a+(b-a)*t; }
+
+      function tick(){
+        current.x = lerp(current.x, target.x, LERP);
+        current.y = lerp(current.y, target.y, LERP);
+        current.s = lerp(current.s, target.s, LERP);
+
+        card.style.transform =
+          'perspective(1000px)' +
+          ' rotateX('+current.x.toFixed(2)+'deg)' +
+          ' rotateY('+current.y.toFixed(2)+'deg)' +
+          ' scale('+current.s.toFixed(4)+')';
+
+        card.style.boxShadow =
+          (current.y*-1.2).toFixed(1)+'px '+
+          (current.x* 1.2).toFixed(1)+'px 28px rgba(0,0,0,'+
+          (0.06+(current.s-1)*1.5).toFixed(3)+')';
+
+        rafId = requestAnimationFrame(tick);
+      }
+
+      function startLoop(){
+        // Always cancel first — prevents stale rafId bug
+        cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(tick);
+      }
+
+      card.addEventListener('mouseenter', function(){
+        // Disable CSS transition so rAF loop has full control
+        card.style.transition = 'none';
+        card.style.transitionDelay = '0s';
+        target.s = SCALE;
+        startLoop();
+      });
+
+      card.addEventListener('mousemove', function(e){
+        var r  = card.getBoundingClientRect();
+        var dx = (e.clientX - (r.left + r.width  / 2)) / (r.width  / 2);
+        var dy = (e.clientY - (r.top  + r.height / 2)) / (r.height / 2);
+        target.y =  dx * MAX_TILT;
+        target.x = -dy * MAX_TILT;
+      });
+
+      card.addEventListener('mouseleave', function(){
+        target.x = 0;
+        target.y = 0;
+        target.s = 1;
+        // Let loop run until settled, then stop
+        (function waitForSettle(){
+          var dx = Math.abs(current.x - target.x);
+          var dy = Math.abs(current.y - target.y);
+          var ds = Math.abs(current.s - target.s);
+          if (dx < 0.02 && dy < 0.02 && ds < 0.0002){
+            cancelAnimationFrame(rafId);
+            rafId = null;
+            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+            card.style.boxShadow = '0 4px 24px rgba(0,0,0,0.06)';
+          } else {
+            requestAnimationFrame(waitForSettle);
+          }
+        })();
+      });
+    });
+  })();
   /* ── FADE UP ── */
   var fuObs = new IntersectionObserver(function(entries){
     entries.forEach(function(e){
@@ -951,14 +988,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.fu').forEach(function(el){ fuObs.observe(el); });
 
 
-  /* ── SHOWREEL STACK CARDS ── */
-  document.querySelectorAll('.sr-card').forEach(function(card){
-    card.addEventListener('click', function(){
-      var isOpen = card.classList.contains('open');
-      document.querySelectorAll('.sr-card').forEach(function(c){ c.classList.remove('open'); });
-      if (!isOpen) card.classList.add('open');
-    });
-  });
+
   /* ── OTHER OPTION CARDS ── */
   document.querySelectorAll('.other-opt').forEach(function(wrap){
     var cb = wrap.querySelector('input');
